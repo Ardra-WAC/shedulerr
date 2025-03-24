@@ -1,7 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import axios from "axios";
-import useEvents from "../customHooks/useEvents";
+import useEvents from "./useEvents";
 
 const useForm = (initialData, email, role) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -135,7 +135,7 @@ const useForm = (initialData, email, role) => {
     try {
       const newEvent = { ...formData, createdBy: email };
       const response = await axios.post(
-        "http://localhost:3000/api/events",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events`,
         newEvent,
         {
           headers: { "user-email": email, "role-value": role },
@@ -166,7 +166,7 @@ const useForm = (initialData, email, role) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/events/${selectedEvent.id}`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events/${selectedEvent.id}`,
         formData,
         { headers: { "user-email": email, "role-value": role } }
       );
@@ -197,7 +197,7 @@ const useForm = (initialData, email, role) => {
   const handleDeleteEvent = async (closeModal) => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/events/${selectedEvent.id}`,
+       `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events/${selectedEvent.id}`,
         {
           headers: { "user-email": email, "role-value": role },
         }

@@ -8,7 +8,7 @@ const useEvents = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:3000/api/events");
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/events`);
       const formattedEvents = response.data.map((event) => {
         const dateOnly = moment(event.meetingDate).format("YYYY-MM-DD");
         return {

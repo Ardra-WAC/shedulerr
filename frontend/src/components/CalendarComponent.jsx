@@ -3,7 +3,7 @@ import { CircularProgress } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAtom } from "jotai";
-import { userEmail, roleValue } from "../components/Atom";
+import { userEmail, roleValue } from "./Atom";
 import useForm from "../customHooks/useForm";
 import EventCalendar from "./EventCalendar";
 import CreateEventModal from "./CreateEventModal";

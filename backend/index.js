@@ -17,12 +17,7 @@ app.use("/api/events", eventRoutes);
 
 const connectToDB = async () => {
   try {
-    const dbURI =
-      "mongodb+srv://ardrawac:wOKSKRcDz7B2XvDZ@mycluster.k2c3q.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster";
-    await mongoose.connect(dbURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.mongoDb);
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("MongoDB connection error:", error);

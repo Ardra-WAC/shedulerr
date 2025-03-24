@@ -5,12 +5,11 @@ import axios from "axios";
 const useLogin = () => {
   const setRole = useSetAtom(roleValue);
   const setEmail = useSetAtom(userEmail);
-  const API_URL = "http://localhost:3000/api";
 
   const loginSuccess = async (user) => {
     try {
       const response = await axios.post(
-        `${API_URL}/employees/employee/check-email`,
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/employees/employee/check-email`,
         {
           email: user.email,
         }
