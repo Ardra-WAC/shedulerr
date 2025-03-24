@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 function GoogleSignIn({ loginSuccess, loginFailure, parseJwt }) {
   const navigate = useNavigate();
 
-  const handleLoginSuccess = (credentialResponse) => {
+  const handleLoginSuccess = async (credentialResponse) => {
     const { credential } = credentialResponse;
     const user = parseJwt(credential);
     loginSuccess(user, "google");
-    navigate("/home", { state: { user } });
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate("/home");
   };
-
   return (
     <div>
       <GoogleLogin

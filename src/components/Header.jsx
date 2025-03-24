@@ -1,43 +1,32 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import useDropdown from "../customHooks/useDropDown";
-import DropDownMenu from "./DropDownMenu";
-import { roleValue } from "./Atom";
-import { userEmail } from "./Atom";
-import { useSetAtom } from "jotai";
-import { googleLogout } from "@react-oauth/google";
-
 import "../styles/Header.css";
+import useLogout from "../customHooks/useLogout";
+import { FaSignOutAlt } from "react-icons/fa"; 
 
-const Header = ({ user }) => {
-  const { isDropdownOpen, toggleDropdown, closeDropdown } = useDropdown();
-  const navigate = useNavigate();
-  const setRole = useSetAtom(roleValue);
-  const setEmail = useSetAtom(userEmail);
-
-  const handleLogout = () => {
-    closeDropdown();
-    googleLogout();
-    setEmail("");
-    setRole("");
-    navigate("/logoutfallback");
-    console.log("Logged out");
-  };
+const Header = () => {
+  const {handleLogout} = useLogout();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <header className="header">
       <div className="logo">
         <h1>WacMeets</h1>
       </div>
-      <div className="profile" onClick={toggleDropdown}>
+      <div
+        className="profile"
+      >
         <img
           src={user?.picture || "defaultProfilePic.jpg"}
           alt="Profile"
           className="profile-pic"
         />
-        {isDropdownOpen && (
-          <DropDownMenu user={user} handleLogout={handleLogout} />
-        )}
+        <button>
+         <FaSignOutAlt
+          onClick={handleLogout}
+          aria-label="Logout"
+          className="logout-icon"
+        />
+        </button>
       </div>
     </header>
   );

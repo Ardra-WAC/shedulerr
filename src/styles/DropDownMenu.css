@@ -1,0 +1,76 @@
+/* DropDownMenu.css */
+.dropdown-container {
+    position: absolute;
+    top: 20px; /* Adjust this to position the dropdown below the profile picture */
+    right: 300px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .dropdown-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 220px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* This class gets applied when the dropdown is open */
+  .dropdown-content.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Profile picture */
+  .dropdown-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  /* User name and role */
+  .dropdown-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .dropdown-role {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+  }
+  
+  /* Divider between the user info and logout button */
+  .dropdown-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+  }
+  
+  /* Logout button */
+  .dropdown-logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-logout-button:hover {
+    background-color: #d32f2f;
+  }
+  
