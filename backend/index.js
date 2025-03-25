@@ -21,7 +21,7 @@ app.use("/api/events", eventRoutes);
 
 const connectToDB = async () => {
   try {
-    const dburi =process.env.mongoDb
+    const dburi=process.env.mongoDb
     await mongoose.connect(dburi);
     console.log("Connected to MongoDB");
   } catch (error) {
