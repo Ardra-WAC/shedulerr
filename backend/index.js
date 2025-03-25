@@ -1,6 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from 'dotenv';
+
+// Load environment variables from the .env file
+dotenv.config();
 
 const app = express();
 
@@ -17,7 +21,8 @@ app.use("/api/events", eventRoutes);
 
 const connectToDB = async () => {
   try {
-    await mongoose.connect(process.env.mongoDb);
+    const dburi =process.env.mongoDb
+    await mongoose.connect(dburi);
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("MongoDB connection error:", error);
