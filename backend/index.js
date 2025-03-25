@@ -12,7 +12,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'https://yourfrontend.com', // Allow only your frontend domain
+  origin: 'https://calendarappfrnt.vercel.app/', // Allow only your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
   credentials: true, // Allow cookies and credentials to be sent
 };
