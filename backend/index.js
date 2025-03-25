@@ -8,7 +8,17 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+
+const corsOptions = {
+  origin: 'https://yourfrontend.com', // Allow only your frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  credentials: true, // Allow cookies and credentials to be sent
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
