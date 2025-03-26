@@ -4,25 +4,7 @@ import cors from "cors";
 
 const app = express();
 
-// app.use(cors());
-
-
-const allowedOrigin = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';  
-
-// CORS configuration
-app.use(cors({
-  origin: (origin, callback) => {
-    // If no origin (for server-to-server requests or requests without origin), allow it
-    if (!origin || origin === allowedOrigin) {
-      callback(null, true);  // Allow the origin
-    } else {
-      callback(new Error('Not allowed by CORS'));  // Reject the origin
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  // Allow these HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers
-}));
-
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
