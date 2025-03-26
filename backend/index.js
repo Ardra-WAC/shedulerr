@@ -38,12 +38,8 @@ app.use("/api/events", eventRoutes);
 
 const connectToDB = async () => {
   try {
-<<<<<<< HEAD
-    await mongoose.connect("mongodb+srv://ardrawac:wOKSKRcDz7B2XvDZ@mycluster.k2c3q.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster");
-=======
     const dburi=process.env.mongoDb
     await mongoose.connect(dburi);
->>>>>>> 89a73f19ffc3a0c37986029b8472998937cdd126
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("MongoDB connection error:", error);
