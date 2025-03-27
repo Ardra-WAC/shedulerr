@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [process.env.ALLOWED_ORIGIN, "http://localhost:5173", "https://calendarapp-mocha.vercel.app"];
+const allowedOrigins = [process.env.ALLOWED_ORIGIN, "https://calendarappfrnt.vercel.app", "https://calendarapp-mocha.vercel.app"];
 
 app.use(cors({
     origin: function (origin, callback) {
