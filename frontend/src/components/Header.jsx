@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <h1>WacMeets</h1>
+        <h1>WacMeetsss</h1>
       </div>
       <div
         className="profile"
