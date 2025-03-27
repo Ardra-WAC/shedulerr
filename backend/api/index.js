@@ -143,7 +143,8 @@ dotenv.config();
 const app = express();
 
 // CORS Configuration: Allow only specific origins (e.g., your front-end)
-const allowedOrigins = [process.env.ALLOWED_ORIGIN, "https://calendarappfrnt.vercel.app"];
+const allowedOrigins = [process.env.ALLOWED_ORIGIN, "https://calendarappfrnt.vercel.app", "http://localhost:5173"];
+console.log("Allowed Origins", allowedOrigins);
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -167,8 +168,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Import routes
-import employeeRoutes from "./routes/EmployeeRoutes.js"; 
-import eventRoutes from "./routes/events.js";
+import employeeRoutes from "../routes/EmployeeRoutes.js"; 
+import eventRoutes from "../routes/events.js";
 
 // Use routes
 app.use("/api/employees", employeeRoutes);
