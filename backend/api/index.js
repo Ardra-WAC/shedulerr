@@ -107,8 +107,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-import employeeRoutes from "./routes/EmployeeRoutes.js";
-import eventRoutes from "./routes/events.js";
+import employeeRoutes from "../routes/EmployeeRoutes.js";
+import eventRoutes from "../routes/events.js";
 
 app.use("/api/employees", employeeRoutes);
 app.use("/api/events", eventRoutes);
