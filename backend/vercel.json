@@ -2,20 +2,26 @@
     "installCommand": "npm install --legacy-peer-deps",
     "version": 2,
     "builds": [
-        {
-            "src": "backend/api/index.js",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "backend/api/index.js",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "backend/api/index.js"
+      {
+        "src": "/api/(.*)",
+        "dest": "backend/api/index.js",
+        "headers": {
+          "Access-Control-Allow-Origin": "https://calendarappfrnt.vercel.app",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true"
         }
+      }
     ],
     "functions": {
-        "backend/api/index.js": {
-            "runtime": "nodejs18.x"
-        }
+      "backend/api/index.js": {
+        "runtime": "nodejs18.x"
+      }
     }
-}
+  }

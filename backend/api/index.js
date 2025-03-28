@@ -12,23 +12,21 @@ const allowedOrigins = [process.env.ALLOWED_ORIGIN, "https://calendarappfrnt.ver
 console.log("Allowed Origins", allowedOrigins);
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Check if the origin is allowed, or if there is no origin (e.g., for testing)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS Error: Not allowed by CORS'));
-    }
-  },
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true  // If you're using cookies or authentication tokens, you might need this.
+  credentials: true
 }));
 
-// Enable OPTIONS preflight requests
-app.options('*', cors());
+app.options('*', (req, res) => {
+  console.log("Preflight request received from:", req.headers.origin);
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(204);
+});
 
-// Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
